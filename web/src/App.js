@@ -3,8 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header>Learn React with DevOps</header>
-
+      <h3>Learn React with DevOps</h3>
       <button>Login</button>
 
     </div>
