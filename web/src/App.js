@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from "react";
+import Button from '@mui/material/Button';
 
 function App() {
 
@@ -10,7 +11,7 @@ function App() {
             <h1>Learn React with DevOps</h1>
             <div>Hello, {username}</div>
 
-            <button onClick={ (e)=> setUsername("Troels")}>Skift navn</button>
+            <Button variant= "contained" onClick={ (e)=> setUsername("Troels")}>Skift navn</Button>
 
         </div>
     );
