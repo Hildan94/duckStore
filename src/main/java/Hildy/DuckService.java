@@ -9,12 +9,12 @@ import java.util.*;
 
 
 @Produces(MediaType.APPLICATION_JSON)
-@Path("giraffes")
+@Path("ducks")
 
-public class GiraffeService {
-    List<String> giraffes = Arrays.asList("Melman", "Elmer");
+public class DuckService {
+    List<String> ducks = Arrays.asList("Melman", "Elmer");
     @GET
-    public List<String> getGiraffes() {
-        return giraffes;
+    public List<String> getDucks() {
+        return ducks;
     }
 }

@@ -3,29 +3,29 @@ import {makeAutoObservable, observable, runInAction} from "mobx";
 const baseUrl = process.env.NODE_ENV === 'development' ?
     "http://localhost:8080/":""; //Check if dev environment
 
-class GiraffeStore {
+class DuckStore {
 
-    giraffes = ["Loading giraffes"];
+    ducks = ["Loading ducks"];
 
     constructor( ) {
         makeAutoObservable(this,
             {},
             {autoBind:true});
-        this.fetchGiraffes();
+        this.fetchDucks();
     }
 
-    fetchGiraffes(){
-        fetch(baseUrl + "api/giraffes").then(
+    fetchDucks(){
+        fetch(baseUrl + "api/ducks").then(
             (response)=> response.json().then(
-                (json)=> runInAction(()=> this.giraffes=json)
+                (json)=> runInAction(()=> this.ducks=json)
             )
         )
     }
 
-    addGiraffe = (giraffe) => {
-        this.giraffes.push(giraffe);
+    addDucks = (ducks) => {
+        this.ducks.push(ducks);
     }
 
 }
 
-export const giraffeStore = new GiraffeStore();
+export const duckStore = new DuckStore();

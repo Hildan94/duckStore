@@ -3,7 +3,7 @@ import {Link, Route, Routes, useNavigate, useParams} from "react-router-dom";
 import { Home } from "./stores/Home";
 import {NotFound} from "./stores/NotFound";
 import {Button} from "@mui/material";
-import {giraffeStore} from "./stores/GiraffeStore";
+import {duckStore} from "./stores/DuckStore";
 import {observer} from "mobx-react-lite";
 
 
@@ -30,10 +30,10 @@ function App() {
 
             <Button onClick={(e)=> navigate("about/button")}> Or like this </Button>
 
-            <Button onClick={()=> giraffeStore.addGiraffe("Elmer")}> Tilføj en giraf </Button>
+            <Button onClick={()=> duckStore.addDucks("Elmer")}> Tilføj en and </Button>
             <ul>
-                {giraffeStore.giraffes.map((giraffeName, key)=>
-                <li key = {key}>{giraffeName}</li>)}
+                {duckStore.ducks.map((duckName, key)=>
+                <li key = {key}>{duckName}</li>)}
             </ul>
 
             <Routes>
