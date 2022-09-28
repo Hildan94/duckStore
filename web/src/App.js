@@ -1,34 +1,35 @@
 import './App.css';
-import {Link, Route, Routes} from "react-router-dom";
-import { BookList } from "./pages/BookList";
+import {Link, Route, Routes, useNavigate, useParams} from "react-router-dom";
 import { Home } from "./pages/Home";
-import {Book} from "./pages/Book";
-import {NewBook} from "./pages/NewBook";
 import {NotFound} from "./pages/NotFound";
+import {Button} from "@mui/material";
 
 function App() {
+
+    const About = ()=> {
+        let {text} = useParams();
+        return <div>
+            <h1> About {text}</h1>
+        </div>
+
+    }
+
+    let navigate = useNavigate();
 
     return(
 
         <div>
             <nav>
-                <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to={"about/link"}>Go to link</Link>
                     </li>
-                    <li>
-                        <Link to="/books">Books</Link>
-                    </li>
-                </ul>
-
             </nav>
+
+            <Button onClick={(e)=> navigate("about/button")}> Or like this </Button>
+
             <Routes>
                 <Route path="/" element={<Home/>}/>
-                <Route path = "/books">
-                    <Route index element = {<BookList />} />
-                    <Route path = ":id" element={<Book />} />
-                    <Route path = "new" element={<NewBook />} />
-                </Route>
+                <Route path ={"/about/:text"}  element = {<About/>}/>
                 <Route path = "*" element={<NotFound />}/>
             </Routes>
         </div>
