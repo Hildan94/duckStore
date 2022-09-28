@@ -1,8 +1,11 @@
 import './App.css';
 import {Link, Route, Routes, useNavigate, useParams} from "react-router-dom";
-import { Home } from "./pages/Home";
-import {NotFound} from "./pages/NotFound";
+import { Home } from "./stores/Home";
+import {NotFound} from "./stores/NotFound";
 import {Button} from "@mui/material";
+import {giraffeStore} from "./stores/GiraffeStore";
+import {observer} from "mobx-react-lite";
+
 
 function App() {
 
@@ -11,8 +14,8 @@ function App() {
         return <div>
             <h1> About {text}</h1>
         </div>
-
     }
+
 
     let navigate = useNavigate();
 
@@ -27,6 +30,12 @@ function App() {
 
             <Button onClick={(e)=> navigate("about/button")}> Or like this </Button>
 
+            <Button onClick={()=> giraffeStore.addGiraffe("Elmer")}> Tilføj en giraf </Button>
+            <ul>
+                {giraffeStore.giraffes.map((giraffeName, key)=>
+                <li key = {key}>{giraffeName}</li>)}
+            </ul>
+
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path ={"/about/:text"}  element = {<About/>}/>
@@ -36,4 +45,4 @@ function App() {
     )
 }
 
-export default App;
+export default observer(App);
