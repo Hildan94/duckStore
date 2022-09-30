@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import {BrowserRouter} from "react-router-dom";
-import userEvent from "@testing-library/user-event";
 
 
-
+test('Check for duck button', () => {
+    render(<App />);
+    let button = screen.getByRole("button");
+    expect(button).toHaveTextContent("Tilføj en and");
+});
